@@ -38,17 +38,15 @@ def create_contacts(rodzaj, ilosc):
 
     contacts = []
 
-    if rodzaj == "Base":
-        for _ in range(ilosc):
+    for _ in range(ilosc):
+        if rodzaj == "Base":
             contact = BaseContact(
                 name=fake.first_name(),
                 surname=fake.last_name(), 
                 private_number=fake.phone_number(),
                 email_address=fake.email())
             contacts.append(contact)
-            
-    elif rodzaj == "Business":
-        for _ in range(ilosc):
+        elif rodzaj == "Business":
             contact = BusinessContact(
                 name=fake.first_name(),
                 surname=fake.last_name(), 
@@ -58,6 +56,21 @@ def create_contacts(rodzaj, ilosc):
                 company = fake.company(),
                 business_number = fake.phone_number())
             contacts.append(contact)
+        else:
+            print("Nie wybrano prawidłowego rodzaju. Wybierz Base lub Business!")
+            break
     return contacts
+    
+if __name__ == "__main__":
+    rodzaj = str(input("Podaj rodzaj wizytówki: Base - wizytówka podstawowa, Business - wizytówka biznesowa: "))
+    ilosc = int(input("Ile wizytówek tego typu chcesz wygenerować? "))
+    fake_contacts = create_contacts(rodzaj, ilosc)
 
-fake_contacts = create_contacts("Business", 15) # Parametr pierwszy - rodzaj wyzytówki: "Base" lub "Business". Parametr drugi to ilość kontaktów.
+    for i in fake_contacts:
+        if rodzaj == "Base":
+            print(f"Imię: {i.name}, Nazwisko: {i.surname}, Nr tel.: {i.private_number}, Email: {i.email_address}")
+        elif rodzaj == "Business":
+            print(f"Imię: {i.name}, Nazwisko: {i.surname}, Nr tel. sł.: {i.business_number}, Email: {i.email_address}, Stanowisko: {i.occupation}")
+        else:
+            print("Nie wygenerowano")
+            break
