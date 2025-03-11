@@ -61,6 +61,3 @@ def create_contacts(rodzaj, ilosc):
     return contacts
 
 fake_contacts = create_contacts("Business", 15) # Parametr pierwszy - rodzaj wyzytówki: "Base" lub "Business". Parametr drugi to ilość kontaktów.
-
-for contact in fake_contacts:
-    print(contact)
