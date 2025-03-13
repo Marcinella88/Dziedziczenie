@@ -65,6 +65,6 @@ if __name__ == "__main__":
     rodzaj = str(input("Podaj rodzaj wizytówki: Base - wizytówka podstawowa, Business - wizytówka biznesowa: "))
     ilosc = int(input("Ile wizytówek tego typu chcesz wygenerować? "))
     fake_contacts = create_contacts(rodzaj, ilosc)
-
-for contact in fake_contacts:
-    print(contact)
+    
+    for contact in fake_contacts:
+        print(contact)
